@@ -196,4 +196,3 @@ The script outputs the following visual assets:
 - `chart3_higher_tiers_beaten.html` and `chart3_higher_tiers_beaten.png`: Scorecard of lower-tier models beating higher-tier medians.
 - `chart4_parameter_efficiency_index.html` and `chart4_parameter_efficiency_index.png`: Intelligence points per active parameter billion.
 - `chart5_minicpm_benchmark_heatmap.html` and `chart5_minicpm_benchmark_heatmap.png`: MiniCPM-4-2B domain capability heatmap across discrete weight classes.
-
