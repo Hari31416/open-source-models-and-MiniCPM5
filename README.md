@@ -160,3 +160,40 @@ Reasoning training not only increases benchmark scores but also acts as an inter
 - Prefer active-parameter footprint over total parameter count when provisioning memory and compute. Sparse MoEs like `Ling 3.0 Tiny` (1.3B active) and `Qwen3.6 35B A3B` (3.0B active) offer higher throughput and lower VRAM requirements than equivalent dense small models.
 - Replace legacy 70B dense models with modern 2B to 8B reasoning models (`MiniCPM5-2B`, `Granite 4.2 8B`, `Qwen3.5 4B Reasoning`) for local or edge deployment.
 - Reserve large models (> 124B) primarily for agentic coding and environment interaction (`TerminalBench`), where large state tracking remains advantageous over compact architectures.
+
+## Data Access and Setup
+
+The benchmark dataset is sourced from [Artificial Analysis](https://artificialanalysis.ai/).
+
+To set up the data locally:
+
+1. Download the open source models JSON dataset from [Artificial Analysis](https://artificialanalysis.ai).
+2. Create the local data directory:
+
+```bash
+mkdir -p data
+```
+
+3. Place the JSON payload at:
+
+```text
+data/open-source-models.json
+```
+
+## Reproducing the Analysis and Charts
+
+The chart generation pipeline uses Python and `uv`:
+
+```bash
+uv run python3 generate_charts.py
+```
+
+The script outputs the following visual assets:
+
+- `index.html`: Unified interactive dashboard with a dropdown view selector.
+- `chart1_tier_distributions.html` and `chart1_tier_distributions.png`: Weight class distributions and outlier leaps.
+- `chart2_parameter_efficiency_scatter.html` and `chart2_parameter_efficiency_scatter.png`: Parameter count versus Intelligence Index scatter plot.
+- `chart3_higher_tiers_beaten.html` and `chart3_higher_tiers_beaten.png`: Scorecard of lower-tier models beating higher-tier medians.
+- `chart4_parameter_efficiency_index.html` and `chart4_parameter_efficiency_index.png`: Intelligence points per active parameter billion.
+- `chart5_minicpm_benchmark_heatmap.html` and `chart5_minicpm_benchmark_heatmap.png`: MiniCPM-4-2B domain capability heatmap across discrete weight classes.
+
